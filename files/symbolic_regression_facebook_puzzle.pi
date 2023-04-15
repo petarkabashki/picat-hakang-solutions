@@ -1,0 +1,34 @@
+/*
+  Facebook puzzle
+
+  [program = A * (4 + A),res = 45,count = 12]
+  [program = A + B * A,res = 45,count = 11]
+  [program = (A + 3) * A + A,res = 45,count = 5]
+  [program = (B / B + B) * A,res = 45.0,count = 5]
+  [program = (4 + A) * A,res = 45,count = 5]
+  [program = A + A * B,res = 45,count = 4]
+  [program = (3 + A + B / B) * A,res = 45.0,count = 4]
+  [program = (B + 1) * A,res = 45,count = 3]
+  [program = A * (B / B + B),res = 45.0,count = 3]
+  [program = A * (B + 1),res = 45,count = 3]
+  [program = A * (A + 3) + A,res = 45,count = 2]
+  [program = A * 1 * (4 + A),res = 45,count = 2]
+
+  resultMap = [45 = 9,45.0 = 3]
+
+*/ 
+data(facebook_puzzle,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [[[1,4],5],
+          [[2,5],12],
+          [[3,6],21]
+          ],
+  Vars = ['A','B'],
+  Unknown = [5,8],
+  Ops = [+,*,/],
+  Constants = 1..10,
+  MaxSize = 5,  
+  Params = new_map([init_size=200,
+                    stop_criteria=generation,
+                    num_gens=100
+                  ]).
+

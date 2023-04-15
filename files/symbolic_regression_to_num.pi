@@ -1,0 +1,25 @@
+/*
+  This is correct, it should be 96.
+
+  [program = 10 * A + A + B,res = 96,count = 12]
+  [program = to_num2(A,A) + B,res = 96,count = 11]
+  [program = to_num2(A,A + B),res = 96,count = 8]
+  [program = B + to_num2(A,A),res = 96,count = 6]
+  [program = to_num2(A,A) + 1 * B,res = 96,count = 3]
+  [program = A + B + A * 10,res = 96,count = 3]
+  [program = A * to_num2(1,1) + B,res = 96,count = 2]
+
+  resultMap = [96 = 7]
+
+*/
+data(to_num,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [[[4,3],43+4],
+          [[3,1],31+3],
+          [[7,2],72+7]
+         ],
+  Unknown = [8,8], % 88 + 8 -> 96
+  Vars = ['A','B'],
+  Ops = [+,-,*,to_num2],
+  Constants = [1,2,10,100],
+  Params = new_map(),
+  MaxSize = 7.

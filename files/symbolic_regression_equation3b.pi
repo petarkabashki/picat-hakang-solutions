@@ -1,0 +1,46 @@
+/*
+  https://medium.com/@themahfujur/17-can-you-solve-this-puzzle-many-people-fail-to-answer-this-viral-problem-78dfa1d017c6
+  """
+  9 = 72
+  8 = 56
+  7 = 42
+  6 = 30
+  5 = 20
+  3 = ?
+  """
+
+  Same as equation3 but as expanded representation.
+
+  Solutions:
+  [program = C * (C + 2 - 3),res = 6,count = 148]
+  [program = C * (A - 2),res = 9,count = 31]
+  [program = 2 + (A + (B / 3 - A) * 3),res = 12.0,count = 21]
+  [program = (C - 1) * C,res = 6,count = 8]
+  [program = C * C + 8 * (B * 0) - C,res = 6,count = 6]
+  [program = B - C * 2,res = 14,count = 6]
+  [program = (C + 2 - 3) * C,res = 6,count = 4]
+  [program = (A - 2) * C,res = 9,count = 4]
+  [program = B - C - (0 + C),res = 14,count = 1]
+  [program = B - C - C,res = 14,count = 1]
+  [program = B - 2 * C,res = 14,count = 1]
+  [program = B + (1 * 1 - (A + C)),res = 13,count = 1]
+  [program = (0 + C - 1) * C,res = 6,count = 1]
+
+  resultMap = [6 = 5,14 = 4,9 = 2,13 = 1,12.0 = 1]
+
+
+  Cf http://hakank.org/jgap/equation3.conf
+
+*/
+data(equation3b,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [ [[9,72,8],56],
+           [[8,56,7],42],
+           [[7,42,6],30],
+           [[6,30,5],20]                      
+          ],
+  Ops = ['+','-','*','/'],
+  Constants = 0..10,
+  Vars = ['A','B','C'],
+  Unknown = [5,20,3],
+  MaxSize = 9,  
+  Params = new_map([num_gens=30]).

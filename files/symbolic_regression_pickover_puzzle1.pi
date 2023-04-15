@@ -1,0 +1,46 @@
+/*
+
+  Pickover puzzle1
+  
+  http://hakank.org/jgap/pickover_puzzle1.conf
+  https://twitter.com/pickover/status/1504602497280786435
+  Pickover puzzle: https://twitter.com/pickover/status/1504602497280786435
+  (https://gpuzzles.com/mind-teasers/very-easy-number-sequence-puzzle/ )
+  
+   What number should replaced the question mark?
+      3         9       8
+     44        32      75
+   8    4    7   2    7  ? 
+  
+  Encoded as
+     a
+     b
+   c  d 
+
+  i.e. d is the output variable (unknown)
+
+  [program = B / (A + C),res = 5.0,count = 55]
+  [program = B / (C + A),res = 5.0,count = 49]
+  [program = 4 / (9 - C),res = 2.0,count = 29]
+  [program = (A + 9) / A,res = 2.125,count = 24]
+  [program = (9 + C / C * A) / A,res = 2.125,count = 15]
+  [program = 2 + (3 + (10 - 4 - A)) / A,res = 2.125,count = 14]
+  [program = (5 * 3 - A) / 9 * 3,res = 2.333333333333333,count = 7]
+  [program = C / (A + 5) * 4,res = 2.153846153846154,count = 5]
+  [program = (9 + A) / A,res = 2.125,count = 4]
+  [program = 4 * (C / (A + 5)),res = 2.153846153846154,count = 1]
+
+  resultMap = [2.125 = 4,5.0 = 2,2.153846153846154 = 2,2.333333333333333 = 1,2.0 = 1]
+
+*/
+data(pickover_puzzle1,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [[[3,44, 8],4],
+          [[9,32, 7],2]
+          ],
+  Vars = ['A','B','C'], % The variables must be atoms!
+  Unknown = [8,75,7],  
+  Ops = [+,*,/,-],
+  Constants = 1..10,
+  Params = new_map([init_size=1000,num_gens=100]),
+  MaxSize = 21.
+

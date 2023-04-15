@@ -1,0 +1,37 @@
+/*
+
+  Facebook puzzle 1b
+
+  [program = D * (A + 5),res = 40,count = 42]
+  [program = C + D + E,res = 25,count = 23]
+  [program = E * D + D,res = 45,count = 23]
+  [program = D * (E + 1),res = 45,count = 22]
+  [program = E + (D + C),res = 25,count = 21]
+  [program = (E + 1) * D,res = 45,count = 17]
+  [program = E + (C + D),res = 25,count = 16]
+  [program = D + D * E,res = 45,count = 15]
+  [program = D + C + E,res = 25,count = 14]
+  [program = E + C + D,res = 25,count = 11]
+  [program = (D * 1 + 4) * D,res = 45,count = 11]
+  [program = D + E * D,res = 45,count = 9]
+  [program = (A + 5) * D,res = 40,count = 7]
+  [program = (D + 4) * D,res = 45,count = 6]
+  [program = A + 5 + (C + A),res = 23,count = 2]
+  [program = 1 + A + E + C * 1,res = 24,count = 1]
+  [program = D * E + D,res = 45,count = 1]
+  [program = D + (C + E),res = 25,count = 1]
+
+  resultMap = [45 = 8,25 = 6,40 = 2,24 = 1,23 = 1]
+
+*/
+data(facebook_puzzle_1b,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [[[0,0,  0,1, 4],5],
+          [[1,4,  5,2, 5],12],
+          [[2,5, 12,3, 6],21]
+          ],
+  Vars = ['A','B','C','D','E'],
+  Unknown = [3,6, 12,5, 8],
+  Ops = [+,*,/],
+  Constants = 1..10,
+  Params = new_map([num_gens=30]),
+  MaxSize = 15.

@@ -1,0 +1,37 @@
+/*
+  This is the problem that started/inspired this program.
+
+  From https://www.doc.ic.ac.uk/~mpd37/teaching/2014/ml_tutorials/2014-10-15-wood-anglican.pdf
+  Page 34ff
+  """
+  Symbolic Function Induction
+  What’s the next value? And the function?
+
+  Input    Output
+  ---------------
+  1        5
+  2        3
+  3        1
+  4        ?
+  """
+
+  Solutions:
+  [program = 7 - A - A,res = -1,count = 12]
+  [program = 7 - A - (A - A + A),res = -1,count = 6]
+  [program = 2 / (2 / 7) - A * (10 - 8),res = -1.0,count = 3]
+  [program = (4 - A) / A * A - (A - 2 - 1),res = -1.0,count = 3]
+  [program = 7 * 1 - (A + A),res = -1,count = 3]
+
+  resultMap = [-1 = 3,-1.0 = 2]
+
+
+  I.e. 7 - 2*A
+
+*/
+data(simple,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  make_point_seq([5,3,1],Data,Unknown,Vars),
+  Ops = [+,-,*,/],
+  Constants = 1..10,          
+  MaxSize = 8,
+  Params = new_map([num_gens=100]).
+

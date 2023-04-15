@@ -1,0 +1,21 @@
+/*
+  Prime test
+
+  [program = prime(X + 1 + X),res = 1,count = 5]
+  [program = prime(X + (1 + X)),res = 1,count = 3]
+  [program = prime(X + X + 1),res = 1,count = 1]
+
+  resultMap = [1 = 3]
+
+
+*/
+data(prime_test,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [ [[N],P] : N in 2..10, P = cond(prime(N*2+1),1,0)],
+  println(data=Data),
+  Unknown = [1],
+  Vars = ['X'],
+  Ops = [+,*,prime],
+  Constants = 1..4,
+  MaxSize = 5,
+  Params = new_map().
+

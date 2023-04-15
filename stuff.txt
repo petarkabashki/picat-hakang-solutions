@@ -1,0 +1,4 @@
+cat ./My\ Picat\ page.html |sed "s/<a href/\\n<a href/g" | grep href | sed s"/<a href=//" | sed "s/>.*$//" | sed 's_"__g' | grep -v 'http://' | grep -E '\.(pdf|pi|ppt|txt|zip)' > ./picat-problems.txt
+
+
+cat ../picat-problems.txt | xargs -I{} echo 'http://www.hakank.org/picat/'{} | xargs -I{} wget {}

@@ -1,0 +1,21 @@
+/*
+  Test of gcd/2
+
+  [program = gcd(J,I) + gcd(gcd(I,1),3),res = 6,count = 8]
+  [program = 1 + gcd(J,I),res = 6,count = 5]
+  [program = gcd(J - I,J) + gcd(7,3),res = 6,count = 3]
+  [program = gcd(J,I) + 1,res = 6,count = 1]
+
+  resultMap = [6 = 4]
+
+*/
+data(gcd_test,Data,Vars,Unknown,Ops,Constants,MaxSize,Params) :-
+  Data = [[[I,J],T] : I in 1..5,J in 1..5, T = 1+gcd(I,J)],
+  println(data=Data),
+  Ops = [+,-,*,gcd],
+  Vars = ['I','J'],
+  Constants = 1..10,
+  Unknown = [10,5],
+  MaxSize = 5,  
+  Params = new_map([init_size=100, num_gens=100]).
+
